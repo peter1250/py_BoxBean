@@ -29,7 +29,7 @@ class ArcherTowerLong(Tower):
         self.tower_imgs = tower_imgs1[:]
         self.archer_imgs = archer_imgs1[:]
         self.archer_count = 0
-        self.range = 200
+        self.range = 400
         self.original_range = self.range
         self.inRange = False
         self.left = True
@@ -39,7 +39,7 @@ class ArcherTowerLong(Tower):
         self.moving = False
         self.name = "archer"
 
-        self.menu = Menu(self, self.x, self.y, menu_bg, [2000, 5000,"MAX"])
+        self.menu = Menu(self, self.x, self.y, menu_bg, [500, 2000,"MAX"])
         self.menu.add_btn(upgrade_btn, "Upgrade")
 
     def get_upgrade_cost(self):
@@ -139,16 +139,15 @@ class ArcherTowerShort(ArcherTowerLong):
         self.tower_imgs = tower_imgs[:]
         self.archer_imgs = archer_imgs[:]
         self.archer_count = 0
-        self.range = 120
+        self.range = 100
         self.original_range = self.range
         self.inRange = False
         self.left = True
-        self.damage = 2
+        self.damage = 10
         self.original_damage = self.damage
 
-        self.menu = Menu(self, self.x, self.y, menu_bg, [2500, 5500, "MAX"])
+        self.menu = Menu(self, self.x, self.y, menu_bg, [750, 3000, "MAX"])
         self.menu.add_btn(upgrade_btn, "Upgrade")
         self.name = "archer2"
-
 
 

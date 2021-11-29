@@ -1,9 +1,8 @@
 import pygame
 import os
-from enemies.scorpion import Scorpion
+from enemies.normal_box import normal_box
 from enemies.club import Club
-from enemies.wizard import Wizard
-from enemies.sword import Sword
+from enemies.bird_box import bird_box
 from towers.archerTower import ArcherTowerLong, ArcherTowerShort
 from towers.supportTower import DamageTower, RangeTower
 from menu.menu import VerticalMenu, PlayPauseButton
@@ -39,21 +38,14 @@ pygame.mixer.music.load(os.path.join("game_assets", "music.mp3"))
 
 # waves are in form
 # frequency of enemies
-# (# scorpions, # wizards, # clubs, # swords)
+# (# scorpions, bird_box, # clubs, # swords)
 waves = [
-    [20, 0, 0],
-    [50, 0, 0],
-    [100, 0, 0],
     [0, 20, 0],
-    [0, 50, 0, 1],
-    [0, 100, 0],
-    [20, 100, 0],
-    [50, 100, 0],
-    [100, 100, 0],
-    [0, 0, 50, 3],
-    [20, 0, 100],
-    [20, 0, 150],
-    [200, 100, 200],
+    [0, 20, 0],
+    [0, 0, 1],
+    [40, 0, 0],
+    [0, 40, 0],
+    [0, 0, 3]
 ]
 
 class Game:
@@ -65,7 +57,7 @@ class Game:
         self.attack_towers = []
         self.support_towers = []
         self.lives = 10
-        self.money = 2000
+        self.money = 1500
         self.bg = pygame.image.load(os.path.join("game_assets", "bg.png"))
         self.bg = pygame.transform.scale(self.bg, (self.width, self.height))
         self.timer = time.time()
@@ -96,7 +88,7 @@ class Game:
                 self.pause = True
                 self.playPauseButton.paused = self.pause
         else:
-            wave_enemies = [Scorpion(), Wizard(), Club(), Sword()]
+            wave_enemies = [normal_box(), bird_box(), Club()]
             for x in range(len(self.current_wave)):
                 if self.current_wave[x] != 0:
                     self.enemys.append(wave_enemies[x])

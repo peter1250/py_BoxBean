@@ -12,15 +12,14 @@ for x in range(15):
         (64, 64)))
 
 
-class Club(Enemy):
-
+class normal_box(Enemy):
     def __init__(self):
         super().__init__()
-        self.name = "club"
-        self.money = 250
-        self.imgs = imgs[:]
-        self.max_health = 100
+        self.name = "normal_box"
+        self.money = 15
+        self.max_health = 1
         self.health = self.max_health
+        self.imgs = imgs[:]
 
 
 

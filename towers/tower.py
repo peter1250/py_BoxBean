@@ -85,7 +85,7 @@ class Tower:
         """
         if self.level < len(self.tower_imgs):
             self.level += 1
-            self.damage += 1
+            self.damage *= 2
 
     def get_upgrade_cost(self):
         """
