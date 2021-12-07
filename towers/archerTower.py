@@ -38,6 +38,7 @@ class ArcherTowerLong(Tower):
         self.width = self.height = 90
         self.moving = False
         self.name = "archer"
+        self.effect_sound = pygame.mixer.Sound( "game_assets/sounds/pea.mp3" )
 
         self.menu = Menu(self, self.x, self.y, menu_bg, [500, 2000,"MAX"])
         self.menu.add_btn(upgrade_btn, "Upgrade")
@@ -103,16 +104,15 @@ class ArcherTowerLong(Tower):
             first_enemy = enemy_closest[0]
             if self.archer_count == 50:
                 print("공굑")
+                self.effect_sound.play()
                 if first_enemy.hit(self.damage) == True:
                     money = first_enemy.money * 2
                     enemies.remove(first_enemy)
             if first_enemy.x > self.x and not(self.left):
-                print("공굑")
                 self.left = True
                 for x, img in enumerate(self.archer_imgs):
                     self.archer_imgs[x] = pygame.transform.flip(img, True, False)
             elif self.left and first_enemy.x < self.x:
-                print("공굑")
                 self.left = False
                 for x, img in enumerate(self.archer_imgs):
                     self.archer_imgs[x] = pygame.transform.flip(img, True, False)
@@ -146,7 +146,7 @@ class ArcherTowerShort(ArcherTowerLong):
         self.left = True
         self.damage = 10
         self.original_damage = self.damage
-
+        self.effect_sound = pygame.mixer.Sound("game_assets/sounds/blackbean.mp3")
         self.menu = Menu(self, self.x, self.y, menu_bg, [750, 3000, "MAX"])
         self.menu.add_btn(upgrade_btn, "Upgrade")
         self.name = "archer2"
