@@ -50,8 +50,8 @@ waves = [
 
 class Game:
     def __init__(self, win):
-        self.width = 1350
-        self.height = 1300
+        self.width = 1050
+        self.height = 1000
         self.win = win
         self.enemys = []
         self.attack_towers = []
