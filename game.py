@@ -17,7 +17,7 @@ lives_img = pygame.image.load(os.path.join("game_assets","heart.png")).convert_a
 star_img = pygame.image.load(os.path.join("game_assets","star.png")).convert_alpha()
 side_img = pygame.transform.scale(pygame.image.load(os.path.join("game_assets","side.png")).convert_alpha(), (120, 500))
 
-buy_archer = pygame.transform.scale(pygame.image.load(os.path.join("game_assets","buy_archer.png")).convert_alpha(), (75, 75))
+buy_archer = pygame.transform.scale(pygame.image.load(os.path.join("game_assets","buy_archer.png")).convert_alpha(), (75, 100))
 buy_archer_2 = pygame.transform.scale(pygame.image.load(os.path.join("game_assets","buy_archer_2.png")).convert_alpha(), (75, 75))
 buy_damage = pygame.transform.scale(pygame.image.load(os.path.join("game_assets","buy_damage.png")).convert_alpha(), (75, 75))
 buy_range = pygame.transform.scale(pygame.image.load(os.path.join("game_assets","buy_range.png")).convert_alpha(), (75, 75))
@@ -34,13 +34,13 @@ attack_tower_names = ["archer", "archer2"]
 support_tower_names = ["range", "damage"]
 
 # load music
-pygame.mixer.music.load(os.path.join("game_assets", "music.mp3"))
+pygame.mixer.music.load(os.path.join("game_assets", "BoxBeanBGM.mp3"))
 
 # waves are in form
 # frequency of enemies
 # (# scorpions, bird_box, # clubs, # swords)
 waves = [
-    [0, 20, 0],
+    [10, 20, 0],
     [0, 20, 0],
     [0, 0, 1],
     [40, 0, 0],
@@ -51,14 +51,14 @@ waves = [
 class Game:
     def __init__(self, win):
         self.width = 1350
-        self.height = 700
+        self.height = 1300
         self.win = win
         self.enemys = []
         self.attack_towers = []
         self.support_towers = []
         self.lives = 10
         self.money = 1500
-        self.bg = pygame.image.load(os.path.join("game_assets", "bg.png"))
+        self.bg = pygame.image.load(os.path.join("game_assets", "BoxBeanbg.png"))
         self.bg = pygame.transform.scale(self.bg, (self.width, self.height))
         self.timer = time.time()
         self.life_font = pygame.font.SysFont("ComicsCarToon.ttf", 65)

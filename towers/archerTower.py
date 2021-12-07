@@ -12,10 +12,10 @@ upgrade_btn = pygame.transform.scale(pygame.image.load(os.path.join("game_assets
 tower_imgs1 = []
 archer_imgs1 = []
 # load archer tower images
-for x in range(7,10):
+for x in range(1,11):
     tower_imgs1.append(pygame.transform.scale(
         pygame.image.load(os.path.join("game_assets/archer_towers/archer_1", str(x) + ".png")).convert_alpha(),
-        (90, 90)))
+        (150, 150)))
 
 # load archer images
 for x in range(37,43):
@@ -92,7 +92,6 @@ class ArcherTowerLong(Tower):
         for enemy in enemies:
             x = enemy.x
             y = enemy.y
-
             dis = math.sqrt((self.x - enemy.img.get_width()/2 - x)**2 + (self.y -enemy.img.get_height()/2 - y)**2)
             if dis < self.range:
                 self.inRange = True
@@ -103,15 +102,17 @@ class ArcherTowerLong(Tower):
         if len(enemy_closest) > 0:
             first_enemy = enemy_closest[0]
             if self.archer_count == 50:
+                print("공굑")
                 if first_enemy.hit(self.damage) == True:
                     money = first_enemy.money * 2
                     enemies.remove(first_enemy)
-
             if first_enemy.x > self.x and not(self.left):
+                print("공굑")
                 self.left = True
                 for x, img in enumerate(self.archer_imgs):
                     self.archer_imgs[x] = pygame.transform.flip(img, True, False)
             elif self.left and first_enemy.x < self.x:
+                print("공굑")
                 self.left = False
                 for x, img in enumerate(self.archer_imgs):
                     self.archer_imgs[x] = pygame.transform.flip(img, True, False)
